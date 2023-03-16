@@ -1,0 +1,20 @@
+<h1 class="mb-3">Add Post</h1>
+<form action="add-post" method="POST">
+  <div class="mb-3 mt-3">
+    <label for="title" class="form-label"> Post title</label>
+    <input type="text" required name="title" class="form-control" id="title" aria-describedby="post title" />
+  </div>
+  <div class="mb-3">
+    <label for="content" class="form-label"> Post content</label>
+    <input type="text" required name="content" class="form-control" id="content" aria-describedby="post content" />
+  </div>
+  <div class="mb-3">
+    <label for="description" class="form-label"> Post description</label>
+    <input type="text" required name="description" class="form-control" id="description" aria-describedby="post description" />
+  </div>
+  <div class="mb-3">
+    <label for="img" class="form-label"> Post image url</label>
+    <input type="text" name="img" class="form-control" id="img" aria-describedby="post image url" />
+  </div>
+  <button type="submit" class="btn btn-primary">Publish</button>
+</form>
