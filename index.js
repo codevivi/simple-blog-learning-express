@@ -1,5 +1,6 @@
 import express from "express";
 import { engine } from "express-handlebars";
+import { save } from "./src/save-to-json-db.js";
 const PORT = 5000;
 
 const app = express();
@@ -15,13 +16,23 @@ app.get("/", (req, res) => {
 });
 
 app.get("/add-post", (req, res) => {
-  res.render("add-post");
+  if (req.query && req.query.message) {
+    res.render("add-post", { message: req.query.message });
+  } else {
+    res.render("add-post");
+  }
 });
 
 app.post("/add-post", (req, res) => {
-  console.log("bla");
   console.log(req.body);
-  //   res.render("add-post");
+  if (req.body.title && req.body.content && req.body.description && req.body.img) {
+    console.log(req.body);
+    save(req.body);
+    // console.log("there you should save");
+    res.redirect("/");
+  } else {
+    res.redirect("./add-post?message=fill in all fields");
+  }
 });
 
 app.listen(PORT, () => {
