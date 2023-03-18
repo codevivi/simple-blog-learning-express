@@ -1,8 +1,6 @@
-# 🪧Saving data to file
+# 🪧 Simple blog, learning express
 
 ## 📋 About
-
-<!-- 2023-03-16 homework. -->
 
 Simple blog while learning express.
 
