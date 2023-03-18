@@ -17,6 +17,10 @@ export const getData = async function () {
     return []; //if file empty or not created
   }
 };
+export const getPostByInd = async function (ind) {
+  let all = await getData();
+  return all[ind] ? all[ind] : false;
+};
 
 async function writeData(data) {
   await mkdir(DB_PATH, { recursive: true });

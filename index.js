@@ -1,6 +1,6 @@
 import express from "express";
 import { engine } from "express-handlebars";
-import { saveData, getData } from "./src/db.js";
+import { saveData, getData, getPostByInd } from "./src/db.js";
 const PORT = 5000;
 
 const app = express();
@@ -15,6 +15,16 @@ app.get("/", async (req, res) => {
   let posts = await getData();
   console.log(posts);
   res.render("home", { posts });
+});
+
+app.get("/post", async (req, res) => {
+  let ind = req.query.id;
+  let post = await getPostByInd(ind);
+  if (post) {
+    res.render("post", { post });
+  } else {
+    res.redirect("/");
+  }
 });
 
 app.get("/add-post", (req, res) => {
