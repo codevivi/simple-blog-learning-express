@@ -5,15 +5,15 @@
 <form action="add-post" method="POST">
   <div class="mb-3 mt-3">
     <label for="title" class="form-label"> Post title</label>
-    <input type="text" required name="title" class="form-control" id="title" aria-describedby="post title" />
+    <input type="text" required name="title" class="form-control" id="title" minlength="3" maxlength="50" aria-describedby="post title" />
   </div>
   <div class="mb-3">
     <label for="content" class="form-label"> Post content</label>
-    <input type="text" required name="content" class="form-control" id="content" aria-describedby="post content" />
+    <input type="text" required name="content" class="form-control" id="content" minlength="50" maxlength="1000" aria-describedby="post content" />
   </div>
   <div class="mb-3">
     <label for="description" class="form-label"> Post description</label>
-    <input type="text" required name="description" class="form-control" id="description" aria-describedby="post description" />
+    <input type="text" required name="description" class="form-control" id="description" minlength="10" maxlength="100" aria-describedby="post description" />
   </div>
   <div class="mb-3">
     <label for="img" class="form-label"> Post image url</label>

@@ -1,6 +1,6 @@
 import express from "express";
 import { engine } from "express-handlebars";
-import { save } from "./src/save-to-json-db.js";
+import { saveData, getData } from "./src/db.js";
 const PORT = 5000;
 
 const app = express();
@@ -11,8 +11,10 @@ app.set("views", "./views");
 
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/", (req, res) => {
-  res.render("home");
+app.get("/", async (req, res) => {
+  let posts = await getData();
+  console.log(posts);
+  res.render("home", { posts });
 });
 
 app.get("/add-post", (req, res) => {
@@ -24,11 +26,8 @@ app.get("/add-post", (req, res) => {
 });
 
 app.post("/add-post", (req, res) => {
-  console.log(req.body);
   if (req.body.title && req.body.content && req.body.description && req.body.img) {
-    console.log(req.body);
-    save(req.body);
-    // console.log("there you should save");
+    saveData(req.body);
     res.redirect("/");
   } else {
     res.redirect("./add-post?message=fill in all fields");
