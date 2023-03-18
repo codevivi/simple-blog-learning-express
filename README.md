@@ -6,8 +6,6 @@ Simple blog while learning express.
 
 <!-- ![alt app screenshot](./assets/bonus-registration-preview-screenshot.png) -->
 
-### Status: NOT FINISHED
-
 🎯 **Goals:**
 
 - homepage with short posts descriptions
