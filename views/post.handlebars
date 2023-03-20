@@ -1,7 +1,14 @@
 <section>
+  {{#if errorMsg}}
+  <p class="alert alert-danger">errorMsg</p>
+  {{/if}}
+
+  {{#if post}}
   <h1 class="d-inline-flex justify-content-between w-100">{{post.title}}
     <small class="fs-6">{{post.date}}</small>
   </h1>
   <img class="d-block mb-5" src="{{post.img}}" width="600" alt="{{post.title}}" />
   <p>{{post.content}}</p>
 </section>
+
+  {{/if}}

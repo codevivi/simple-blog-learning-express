@@ -17,16 +17,25 @@ app.get("/", async (req, res) => {
   res.render("home", { posts });
 });
 
-app.get("/post", async (req, res) => {
-  let ind = req.query.id;
+// app.get("/post", async (req, res) => {
+//   let ind = req.query.id;
+//   let post = await getPostByInd(ind);
+//   if (post) {
+//     res.render("post", { post });
+//   } else {
+//     res.redirect("/");
+//   }
+// });
+app.get("/post/:id", async (req, res) => {
+  let ind = req.params.id;
   let post = await getPostByInd(ind);
   if (post) {
     res.render("post", { post });
   } else {
-    res.redirect("/");
+    res.render("post", { errorMsg: "Atsiprasome ivyko klaida" });
+    // res.redirect("/");
   }
 });
-
 app.get("/add-post", (req, res) => {
   if (req.query && req.query.message) {
     res.render("add-post", { message: req.query.message });
