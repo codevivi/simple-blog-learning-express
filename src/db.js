@@ -3,6 +3,18 @@ const DB_PATH = new URL("./../database/", import.meta.url).pathname;
 const DB_NAME = "database.json";
 const DB = DB_PATH + "/" + DB_NAME;
 
+export const savePost = async function (post) {
+  post.date = new Date().toLocaleDateString();
+  let currentData = await getData();
+  currentData.posts.push(data);
+  return await writeData(JSON.stringify(currentData));
+};
+
+export const getAllPosts = async function () {
+  const data = await getData();
+  return data.posts;
+};
+
 export const saveData = async function save(data) {
   data.date = new Date().toLocaleDateString();
   let currentData = await getData();
@@ -10,16 +22,33 @@ export const saveData = async function save(data) {
   return await writeData(JSON.stringify(currentData));
 };
 
+export const getPostByInd = async function (ind) {
+  let all = await getAllPosts();
+  return all[ind] ? all[ind] : false;
+};
+
+export const saveUser = async function (user) {
+  let currentData = await getData();
+  currentData.users.push(user);
+  return await writeData(JSON.stringify(currentData));
+};
+
+export const getAllUsers = async function () {
+  const data = await getData();
+  return data.users;
+};
+
+export const getUserByInd = async function (ind) {
+  let all = await getAllUsers();
+  return all[ind] ? all[ind] : false;
+};
+
 export const getData = async function () {
   try {
     return JSON.parse(await readFile(DB, "utf-8"));
   } catch (err) {
-    return []; //if file empty or not created
+    return { posts: [], users: [] }; //if file empty or not created
   }
-};
-export const getPostByInd = async function (ind) {
-  let all = await getData();
-  return all[ind] ? all[ind] : false;
 };
 
 async function writeData(data) {
