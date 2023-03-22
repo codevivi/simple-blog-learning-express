@@ -8,9 +8,10 @@ Simple blog while learning express.
 
 🎯 **Goals:**
 
-- homepage with short posts descriptions
-- add blog possibility
-- click on a blog post in homepage and read whole post;
+- [x] homepage with short posts descriptions
+- [x] add blog possibility
+- [x] click on a blog post in homepage and read whole post;
+- [x] login, logout, protect route with express-session;
 
 ### 🏁 Getting started
 

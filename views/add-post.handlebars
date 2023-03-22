@@ -2,7 +2,7 @@
 {{#if message}}
   <div class="alert alert-danger">{{message}}</div>
 {{/if}}
-<form action="add-post" method="POST">
+<form id="add-post-form" action="add-post" method="POST">
   <div class="mb-3 mt-3">
     <label for="title" class="form-label"> Post title</label>
     <input type="text" required name="title" class="form-control" id="title" minlength="3" maxlength="50" aria-describedby="post title" />

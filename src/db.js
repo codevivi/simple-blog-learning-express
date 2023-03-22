@@ -2,11 +2,12 @@ import { writeFile, mkdir, readFile } from "node:fs/promises";
 const DB_PATH = new URL("./../database/", import.meta.url).pathname;
 const DB_NAME = "database.json";
 const DB = DB_PATH + "/" + DB_NAME;
+const DEFAULT_USER = { name: "admin", email: "admin@bit.lt", password: "1234" };
 
 export const savePost = async function (post) {
   post.date = new Date().toLocaleDateString();
   let currentData = await getData();
-  currentData.posts.push(data);
+  currentData.posts.push(post);
   return await writeData(JSON.stringify(currentData));
 };
 
@@ -47,7 +48,7 @@ export const getData = async function () {
   try {
     return JSON.parse(await readFile(DB, "utf-8"));
   } catch (err) {
-    return { posts: [], users: [] }; //if file empty or not created
+    return { posts: [], users: [DEFAULT_USER] }; //if file empty or not created
   }
 };
 
