@@ -1,6 +1,5 @@
 import express from "express";
 import { engine } from "express-handlebars";
-import { savePost, getPostByInd } from "./src/db.js";
 import { homePage } from "./src/view-controllers/home-page.js";
 import { postPage } from "./src/view-controllers/post-page.js";
 import { loginPage } from "./src/view-controllers/login-page.js";
@@ -26,7 +25,6 @@ app.use(
 );
 app.use(function (req, res, next) {
   res.locals.session = req.session;
-
   next();
 });
 app.engine("handlebars", engine());
@@ -38,7 +36,7 @@ app.use(express.urlencoded({ extended: true }));
 app.get("/", homePage);
 app.get("/login", loginPage);
 app.get("/logout", protect, logout);
-app.get("/post/:id", postPage);
+app.get("/post/:id", protect, postPage);
 app.get("/add-post", protect, addPostPage);
 
 app.post("/login", login);
