@@ -1,8 +1,5 @@
 <section>
-  {{#if errorMsg}}
-  <p class="alert alert-danger">errorMsg</p>
-  {{/if}}
-
+{{> messages}}
   {{#if post}}
   <h1 class="d-inline-flex justify-content-between w-100">{{post.title}}
     <small class="fs-6">{{post.date}}</small>

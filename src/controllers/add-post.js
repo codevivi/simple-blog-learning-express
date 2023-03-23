@@ -1,9 +1,10 @@
 import { savePost } from "../db.js";
 export const addPost = async function (req, res, next) {
-  if (req.body.title && req.body.content && req.body.description && req.body.img) {
+  if (req.body.title && req.body.content && req.body.description) {
     savePost(req.body);
     res.redirect("/");
   } else {
-    res.redirect("./add-post?message=fill in all fields");
+    req.session.errMsg = "Fill in all fields";
+    res.redirect("./add-post");
   }
 };

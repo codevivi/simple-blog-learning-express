@@ -9,6 +9,6 @@ export const login = async function (req, res, next) {
     req.session.userName = user.name;
     return res.redirect("/add-post");
   }
-  let message = "Login details did not match".replaceAll(" ", "%20");
-  res.redirect(`/login?message=${message}`);
+  req.session.errMsg = "Login details did not match";
+  res.redirect(`/login`);
 };

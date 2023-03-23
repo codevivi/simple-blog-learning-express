@@ -1,7 +1,5 @@
 <h1 class="mb-3">Add Post</h1>
-{{#if message}}
-  <div class="alert alert-danger">{{message}}</div>
-{{/if}}
+{{> messages}}
 <form id="add-post-form" action="add-post" method="POST">
   <div class="mb-3 mt-3">
     <label for="title" class="form-label"> Post title</label>

@@ -1,7 +1,5 @@
 <h1 class="mb-3">Login</h1>
-{{#if message}}
-  <p class="alert alert-danger">{{message}}</p>
-{{/if}}
+{{> messages}}
 <form action="/login" method="POST">
   <div class="mb-3 mt-3">
     <label for="email" class="form-label">Email</label>
